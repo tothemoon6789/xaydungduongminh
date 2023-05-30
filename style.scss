@@ -1,0 +1,105 @@
+/* SCSS RGB */
+$secondary-color: #eca400;
+$secondary-color-light: #eaf8bf;
+$primary-color-light: #006992;
+$primary-color: #27476e;
+$primary-color-dark: rgba(0, 29, 74, 1);
+
+$padding-box: 10px;
+$box-border :5px;
+$box-shadown: 0 8px 16px 0 rgba(0,0,0,0.2);
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: "Dancing Script", cursive;
+  font-family: "Mulish", sans-serif;
+}
+section {
+  width: 100vw;
+  height: 100vh;
+}
+@mixin background($path, $postition) {
+  background: url($path);
+  background-position: $postition;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+@mixin background-two-position($path1, $path2, $postition1, $position2) {
+  background: url($path1), url($path2);
+  background-position: $postition1, $position2;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+@mixin flex-center() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  @include background-two-position(
+    "images/bg-blur-top-bottom.svg",
+    "images/bg-header.svg",
+    top center,
+    bottom center
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .navbar {
+    position: absolute;
+    width: 100%;
+    top: 20px;
+    background-color: rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+  .center {
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: 60vh;
+      object-fit: cover;
+    }
+  }
+}
+.intro {
+  background: url("images/bg-blur-top-bottom.svg"), url("images/building.svg");
+  background-repeat: no-repeat;
+  background-size: 100%, auto;
+  background-position: top center, center center;
+  .wrap-intro {
+    backdrop-filter: blur(9px);
+    display: flex;
+    .left {
+    }
+    .right {
+        display: flex;
+        align-items: center;
+      img {
+        width: 100%;
+        object-fit: cover;
+        border-radius: $box-border;
+        box-shadow: $box-shadown;
+      }
+    }
+  }
+}
+.main {
+  @include background("images/bg-main.svg", bottom center);
+}
+.testimonial {
+  @include background-two-position(
+    "images/bg-blur-top-bottom.svg",
+    "images/bg-testimonial.svg",
+    top center,
+    bottom center
+  );
+}
+.contact {
+  @include background("images/bg-blur-top-bottom.svg", top center);
+}
+.footer {
+  @include background("images/bg-blur-bottom-top.svg", bottom);
+}
